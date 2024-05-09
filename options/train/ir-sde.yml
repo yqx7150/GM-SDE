@@ -1,0 +1,97 @@
+#### general settings
+name: ir-sde_muti-mask
+use_tb_logger: true
+model: denoising
+distortion: derain
+gpu_ids: [3]
+
+sde:
+  max_sigma: 1
+  T: 800
+  schedule: cosine # linear, cosine
+  eps: 0.005
+
+degradation: # for some synthetic dataset that only have GTs
+  # for denoising
+  sigma: 1
+  noise_type: G # Gaussian noise: G
+
+  # for super-resolution
+  scale: 4
+
+  # for inpainting
+  #mask_root: datasets/gt_keep_masks/thin # thick, thin, genhalf, ex64
+  mask_root: /zw_code/IR_SDE/irsde/codes/config/inpainting/input_datasets/mask/all2
+  weight_root: /zw_code/IR_SDE/irsde/codes/config/inpainting/input_datasets/weight
+
+
+#### datasets
+datasets:
+  train:
+    name: Train_Dataset
+    mode: GT
+    #dataroot_GT: /home/ziwlu/datasets/celebaHQ/data256x256/trainHQ
+    dataroot_GT: /zw_code/muti_channel--muti_check-svd/input_data/siat_256size_train
+    # dataroot_GT: /home/lqg/hbz/ir_sde/codes/config/inpainting/datasets/SIAT_data_mat/mat
+
+    weight_root: /zw_code/IR_SDE/irsde/codes/config/inpainting/input_datasets/weight
+
+    use_shuffle: true
+    n_workers: 4  # per GPU
+    batch_size: 2
+    GT_size: 256
+    use_flip: true
+    use_rot: true
+    color: RGB
+  val:
+    name: Val_Dataset
+    mode: GT
+    #dataroot_GT: /home/ziwlu/datasets/celebaHQ/data256x256/testHQ
+    dataroot_GT: /zw_code/muti_channel--muti_check-svd/input_data/siat_256size_eval
+
+    weight_root: /zw_code/IR_SDE/irsde/codes/config/inpainting/input_datasets/weight
+
+
+#### network structures
+network_G:
+  which_model_G: ConditionalUNet
+  setting:
+    in_nc: 8
+    out_nc: 8
+    nf: 64
+    depth: 4
+
+#### path
+path:
+  pretrain_model_G: ~
+  strict_load: true
+  resume_state: ~
+  #models: /home/lqg/hbz/IR_SDE/codes/config/inpainting/checkpoint
+  #log: /home/lqg/hbz/IR_SDE/codes/config/inpainting/log
+
+#### training settings: learning rate scheme, loss
+train:
+  optimizer: Adam # Adam, AdamW, Lion
+  lr_G: !!float 1e-4
+  lr_scheme: MultiStepLR
+  beta1: 0.9
+  beta2: 0.99
+  niter: 550000
+  warmup_iter: -1  # no warm up
+  # lr_steps: [50000, 120000, 200000]  #ir-sde_single_5random1possion_w_black T=100
+  lr_steps: [80000, 180000, 300000]   #ir-sde_multi_5random5possion_w_black T=800
+  lr_gamma: 0.5
+  eta_min: !!float 1e-7
+
+  # criterion
+  is_weighted: False
+  loss_type: l1
+  weight: 1.0
+
+  manual_seed: 0
+  val_freq: !!float 5e3
+
+#### logger
+logger:
+  print_freq: 100
+  save_checkpoint_freq: !!float 5e3

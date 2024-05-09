@@ -1,0 +1,56 @@
+name: ir-sde
+suffix: ~  # add suffix to saved images
+model: denoising
+distortion: derain
+gpu_ids: [2]
+# iterNum: 150
+
+sde:
+  max_sigma: 30
+  T: 800
+  schedule: cosine # linear, cosine
+  eps: 0.005
+  
+degradation:
+  # for denoising
+  sigma: 25
+  noise_type: G # Gaussian noise: G
+
+  # for super-resolution
+  scale: 4
+
+  # for inpainting
+  # mask_root: data/datasets/gt_keep_masks/thin # thick, thin, genhalf, ex64
+  mask_root: /zw_code/IR_SDE/irsde/codes/config/inpainting/input_datasets/mask/mask
+  
+  weight_root: /zw_code/IR_SDE/irsde/codes/config/inpainting/input_datasets/weight
+
+datasets:
+  test1:
+    name: Val_Dataset
+    mode: pi
+    # mode: pi
+    #dataroot_GT: /home/ziwlu/datasets/celebaHQ/data256x256/testHQ
+    # dataroot_GT: /home/lqg/hbz/ir_sde/codes/config/inpainting/datasets/test31/mat
+#    dataroot_GT: /zw_code/IR_SDE/irsde/codes/config/inpainting/input_datasets/PEI_brain
+#    dataroot_GT: /zw_code/IR_SDE/irsde/codes/config/inpainting/input_datasets/GE_brain
+    dataroot_GT: /zw_code/IR_SDE/irsde/codes/config/inpainting/input_datasets/test_multi
+#    dataroot_GT: /zw_code/IR_SDE/irsde/codes/config/inpainting/input_datasets/single_coil
+    weight_root: /zw_code/IR_SDE/irsde/codes/config/inpainting/input_datasets/weight
+forgetname: /zw_code/IR_SDE/irsde/codes/config/inpainting/input_datasets/test_multi
+#### network structures
+network_G:
+  which_model_G: ConditionalUNet
+  setting:
+    in_nc: 8
+    out_nc: 8
+    nf: 64
+    depth: 4
+
+#### path
+path:
+  # pretrain_model_G: /home/liuqieg/theworld/hbz/irsde_k_PI//experiments/inpainting/ir-sde/models/400000_G.pth
+  # pretrain_model_G: /home/liuqieg/theworld/hbz/irsde_k_PI//experiments/inpainting/ir-sde_single_5random1possion_w_black/models/400000_G.pth
+  # pretrain_model_G: /home/liuqieg/theworld/hbz/irsde_k_PI/experiments/inpainting/ir-sde/models/665000_G.pth #multi
+  pretrain_model_G: /zw_code/IR_SDE/lingshi_test/experiments/inpainting/ir-sde_muti-mask/models/330000_G.pth #single
+  
