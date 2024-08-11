@@ -26,12 +26,12 @@ python3 separate_siat.py --exe SIAT_MULTICHANNEL --config siat_config.yml --mode
 
 
 ## Graphical representation
- <div align="center"><img src="https://github.com/yqx7150/GM-SDE/blob/main/png/fig1.png" width = "800" height = "480">  </div>
+ <div align="center"><img src="https://github.com/yqx7150/GM-SDE/blob/main/png/fig1.png" width = "900" height = "540">  </div>
  
 Performance exhibition of “multi-view noise” strategy. (a) Training sliced score matching (SSM) loss and validation loss for each iteration. (b) Image quality comparison on the brain dataset at 15% radial sampling: Reconstruction images, error maps (Red) and zoom-in results (Green).
 </br>
 
- <div align="center"><img src="https://github.com/yqx7150/GM-SDE/blob/main/png/Fig2.png"> </div>
+ <div align="center"><img src="https://github.com/yqx7150/GM-SDE/blob/main/png/Fig2.png" width = "900" height = "540"> </div>
 
 The pipeline of the prior learning and iterative reconstruction procedure in GM-SDE. Top: The training process involves learning k-space priors through noise networks. Bottom: The reconstruction process is characterized by iteratively eliminating aliasing artifacts and reconstructing intricate details using a numeri-cal solver for reverse SDE, low-rank constraint, and data consistency.
 
