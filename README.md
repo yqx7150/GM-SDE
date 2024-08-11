@@ -28,7 +28,8 @@ python3 separate_siat.py --exe SIAT_MULTICHANNEL --config siat_config.yml --mode
 ## Graphical representation
  <div align="center"><img src="https://github.com/yqx7150/GM-SDE/blob/main/png/fig1.png" width = "900" height = "540">  </div>
  
-Performance exhibition of “multi-view noise” strategy. (a) Training sliced score matching (SSM) loss and validation loss for each iteration. (b) Image quality comparison on the brain dataset at 15% radial sampling: Reconstruction images, error maps (Red) and zoom-in results (Green).
+Different constructions of <i>ϕ<sup>{1,2,3}</sup><sub>0</sub>(x<sub>w</sub>)</i> and <i>ϕ<sup>{1,2,3}</sup><sub>T</sub>(x<sub>w</sub>)</i> correspond to the three variants of GM-SDE. <i>ϕ<sup>{1,2,3}</sup><sub>0</sub>(x<sub>w</sub>)</i> denotes the input of the network comprising the ground truth (GT) original data, and <i>ϕ<sup>{1,2,3}</sup><sub>T</sub>(x<sub>w</sub>)</i> represents the degraded image (LQ) augmented with Gaussian noise distribution. <i>w</i> stands for the weight operator. The proposed method diffuses <i>ϕ<sup>{1,2,3}</sup><sub>0</sub>(x<sub>w</sub>)</i> into the <i>ϕ<sup>{1,2,3}</sup><sub>T</sub>(x<sub>w</sub>)</i> data by gradually injecting noise and reconstructs the data by reversing the process.
+
 </br>
 
  <div align="center"><img src="https://github.com/yqx7150/GM-SDE/blob/main/png/Fig2.png" width = "1000" height = "540"> </div>
