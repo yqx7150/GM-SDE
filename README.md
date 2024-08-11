@@ -19,15 +19,22 @@ In recent years, diffusion models have made significant progress in accelerating
  
 Performance exhibition of “multi-view noise” strategy. (a) Training sliced score matching (SSM) loss and validation loss for each iteration. (b) Image quality comparison on the brain dataset at 15% radial sampling: Reconstruction images, error maps (Red) and zoom-in results (Green).
 
- <div align="center"><img src="https://github.com/yqx7150/HGGDP/blob/master/hggdp_rec/sample/fig7.png"> </div>
+ <div align="center"><img src="https://github.com/yqx7150/GM-SDE/blob/main/png/Fig2.png"> </div>
 
-Pipeline of sampling from the high-dimensional noisy data distribution with multi-view noise and intermediate samples. (a) Conceptual dia-gram of the sampling on high-dimensional noisy data distribution with multi-view noise. (b) Intermediate samples of annealed Langevin dynamics.
+The pipeline of the prior learning and iterative reconstruction procedure in GM-SDE. Top: The training process involves learning k-space priors through noise networks. Bottom: The reconstruction process is characterized by iteratively eliminating aliasing artifacts and reconstructing intricate details using a numeri-cal solver for reverse SDE, low-rank constraint, and data consistency.
 
 
-## Reconstruction Results by Various Methods at 85% 2D Random Undersampling.
-<div align="center"><img src="https://github.com/yqx7150/HGGDP/blob/master/hggdp_rec/sample/fig11.png"> </div>
+## Reconstruction Results Compared to DL-based Methods at R=4 using 2D Poisson Sampling Mask.
+<div align="center"><img src="https://github.com/yqx7150/GM-SDE/blob/main/png/Fig6.svg"> </div>
 
-Reconstruction comparison on pseudo radial sampling at acceleration factor 6.7 . Top: Reference, reconstruction by DLMRI, PANO, FDLCP; Bottom: Reconstruction by NLR-CS, DC-CNN, EDAEPRec, HGGDPRec. Green and red boxes illustrate the zoom in results and error maps, respectively.
+The reconstruction results of T2 Transverse Brain data at 2D poisson sam-pling pattern with acceleration factors of 4. The first row shows the full-sampled, under-sampled, and the reconstruction of EBMRec, HGGDP, and GM-SDE. The second row shows the corresponding error maps of the re-construction.
+
+
+## Reconstruction Results Compared to SDE-based Methods at R=10 using 2D Poisson Sampling Mask.
+<div align="center"><img src="https://github.com/yqx7150/GM-SDE/blob/main/png/Fig7.svg"> </div>
+
+Results by full-sampled, under-sampled, WKGM, HFS-SDE, and GM-SDE on T1 GE Brain image at R=10 using 2D poisson sampling mask.
+
 
 
 
