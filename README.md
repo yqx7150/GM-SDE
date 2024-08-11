@@ -15,7 +15,7 @@ In recent years, diffusion models have made significant progress in accelerating
 
 
 ## Graphical representation
- <div align="center"><img src="https://github.com/yqx7150/GM-SDE/main/png/fig1.png" width = "400" height = "450">  </div>
+ <div align="center"><img src="https://github.com/yqx7150/GM-SDE/blob/main/png/Fig2.png" width = "400" height = "450">  </div>
  
 Performance exhibition of “multi-view noise” strategy. (a) Training sliced score matching (SSM) loss and validation loss for each iteration. (b) Image quality comparison on the brain dataset at 15% radial sampling: Reconstruction images, error maps (Red) and zoom-in results (Green).
 
