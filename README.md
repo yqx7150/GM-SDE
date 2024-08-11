@@ -37,13 +37,13 @@ The pipeline of the prior learning and iterative reconstruction procedure in GM-
 
 
 ## Reconstruction Results Compared to DL-based Methods at R=4 using 2D Poisson Sampling Mask.
-<div align="center"><img src="https://github.com/yqx7150/GM-SDE/blob/main/png/Fig6.svg"> </div>
+<div align="center"><img src="https://github.com/yqx7150/GM-SDE/blob/main/png/Fig6.png"> </div>
 
 The reconstruction results of T2 Transverse Brain data at 2D poisson sam-pling pattern with acceleration factors of 4. The first row shows the full-sampled, under-sampled, and the reconstruction of EBMRec, HGGDP, and GM-SDE. The second row shows the corresponding error maps of the re-construction.
 
 
 ## Reconstruction Results Compared to SDE-based Methods at R=10 using 2D Poisson Sampling Mask.
-<div align="center"><img src="https://github.com/yqx7150/GM-SDE/blob/main/png/Fig7.svg"> </div>
+<div align="center"><img src="https://github.com/yqx7150/GM-SDE/blob/main/png/Fig7.png"> </div>
 
 Results by full-sampled, under-sampled, WKGM, HFS-SDE, and GM-SDE on T1 GE Brain image at R=10 using 2D poisson sampling mask.
 
