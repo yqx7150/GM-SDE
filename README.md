@@ -16,12 +16,12 @@ In recent years, diffusion models have made significant progress in accelerating
 
 ## Training
 ```bash
-python3 separate_siat.py --exe SIAT_TRAIN --config siat_config.yml --checkpoint your save path
+python train.py -opt=options/train/ir-sde.yml
 ```
 
 ## Test
 ```bash
-python3 separate_siat.py --exe SIAT_MULTICHANNEL --config siat_config.yml --model hggdp --test
+python test.py -opt=options/test/ir-sde.yml
 ```
 
 
